@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class JdbcUtil{
@@ -18,7 +19,9 @@ public class JdbcUtil{
 			ds = (DataSource)ctx.lookup("java:comp/env/jdbc/mysql");
 			System.out.println("connection pool 생성");
 			
-		} catch (Exception e) {
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 		

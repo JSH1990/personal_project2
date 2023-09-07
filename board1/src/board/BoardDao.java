@@ -29,7 +29,7 @@ public class BoardDao {
 				"    `regdate`,\r\n" + 
 				"    `cnt`\r\n" + 
 				"FROM \r\n" + 
-				"    `board`\r\n" + 
+				"    `board1`\r\n" + 
 				"ORDER BY \r\n" +
 				"    `regdate` DESC;\r\n" + 
 				"";

@@ -2,6 +2,7 @@ package board;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,25 +20,14 @@ public class BoardDao {
 
 	//전체 조회하기
 	public List<BoardVo> selectAll(){
-		Connection cnn=null;
+		Connection con=null;
 		Statement stmt=null;
-		String query = "SELECT \r\n" + 
-				"	`num`,\r\n" + 
-				"    `title`,\r\n" + 
-				"    `writer`,\r\n" + 
-				"    `content`,\r\n" + 
-				"    `regdate`,\r\n" + 
-				"    `cnt`\r\n" + 
-				"FROM \r\n" + 
-				"    `board1`\r\n" + 
-				"ORDER BY \r\n" +
-				"    `regdate` DESC;\r\n" + 
-				"";
+		String query = "select num, title, writer, content, regdate, cnt FROM board1 ORDER BY regdate DESC;";
 		ResultSet rs=null;
 		ArrayList<BoardVo> ls = new ArrayList<BoardVo>();
 		try {
-			cnn = ju.getConnection();
-			stmt = cnn.createStatement();
+			con = ju.getConnection();
+			stmt = con.createStatement();
 			stmt.execute(query);
 			rs = stmt.executeQuery(query);
 			while(rs.next()) {
@@ -53,9 +43,9 @@ public class BoardDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(cnn !=null) {
+			if(con !=null) {
 				try {
-					cnn.close();
+					con.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -76,11 +66,42 @@ public class BoardDao {
 		}return ls;
 
 			//하나만 조회하기
-
+	}
+	
 
 			//작성하기
+	public int insert(BoardVo vo) {
+		Connection con = null;
+		PreparedStatement pstmt=null;
+		String query = "insest into board1 (title, writer, content, regdate, cnt) values (?, ?, ?, now(), 0) ";
+		int ret = -1;
+		
+		try {
+			con = ju.getConnection();
+			pstmt= con.prepareStatement(query);
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getWriter());
+			pstmt.setString(3, vo.getContent());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if(con !=null) {
+				try {
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}if(pstmt !=null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 
-
+			}
+		}return ret;
+		
 			//수정하기
 
 

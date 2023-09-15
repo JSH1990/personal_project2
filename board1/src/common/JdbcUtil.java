@@ -14,9 +14,9 @@ public class JdbcUtil{
 	static {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			System.out.println("드라이버 로딩성공");
+			System.out.println("드라이버 로딩 성공!");
 			InitialContext ctx = new InitialContext();
-			ds = (DataSource)ctx.lookup("java:comp/env/jdbc/mysql");
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/mysql");
 			System.out.println("connection pool 생성");
 			
 		} catch (ClassNotFoundException e) {
@@ -24,10 +24,11 @@ public class JdbcUtil{
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
-	public JdbcUtil( ) {}
+	private JdbcUtil() {
+		
+	}
 	
 	public static JdbcUtil getInstance() {
 		return instance;
@@ -36,5 +37,4 @@ public class JdbcUtil{
 	public Connection getConnection() throws SQLException {
 		return ds.getConnection();
 	}
-	
 }

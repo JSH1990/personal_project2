@@ -1,14 +1,32 @@
 package board;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class BoardVo {
 	private int num;
 	private String title;
 	private String writer;
 	private String content;
-	private Date regDate;
+	private Date regdate;
 	private int cnt;
+	
+	public BoardVo() {}
+
+	public BoardVo(int num, String title, String writer, String content, Date regdate, int cnt) {
+		super();
+		this.num = num;
+		this.title = title;
+		this.writer = writer;
+		this.content = content;
+		this.regdate = regdate;
+		this.cnt = cnt;
+	}
+
+	@Override
+	public String toString() {
+		return "BoardVo [num=" + num + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regdate="
+				+ regdate + ", cnt=" + cnt + "]";
+	}
 	public int getNum() {
 		return num;
 	}
@@ -33,11 +51,11 @@ public class BoardVo {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getRegDate() {
-		return regDate;
+	public Date getRegdate() {
+		return regdate;
 	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 	public int getCnt() {
 		return cnt;
@@ -45,22 +63,6 @@ public class BoardVo {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
-	public BoardVo(int num, String title, String writer, String content, Date regDate, int cnt) {
-		super();
-		this.num = num;
-		this.title = title;
-		this.writer = writer;
-		this.content = content;
-		this.regDate = regDate;
-		this.cnt = cnt;
-	}
-	@Override
-	public String toString() {
-		return "BoardVo [num=" + num + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDate="
-				+ regDate + ", cnt=" + cnt + "]";
-	}
 	
 	
-    
-
 }

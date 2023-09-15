@@ -5,6 +5,6 @@ import java.sql.Date;
 public class main {
 	public static void main(String[] args) {
 		BoardDao dao = new BoardDao();
-		dao.selectAll();
+		dao.selectOne(1);
 	}
 }

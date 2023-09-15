@@ -29,7 +29,7 @@
 	<td>${board.title}</td>
 	<td>${board.writer}</td>
 	<td>${board.content}</td>
-	<td>${board.regDate}</td>
+	<td>${board.regdate}</td>
 	<td>${board.cnt}</td>
 </tr>	
 </c:forEach>

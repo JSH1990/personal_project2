@@ -17,13 +17,15 @@
 <body>
 <h3>글 정보</h3>
 <p>번호:${vo.num}</p>
-<p>제목:&{vo.title}</p>
-<p>작성자:&{vo.writer}</p>
-<p>내용:&{vo.content}</p>
-<p>등록일자:&{vo.regdate}</p>
-<p>조회수:&{vo.cnt}</p>
+<p>제목:${vo.title}</p>
+<p>작성자:${vo.writer}</p>
+<p>내용:${vo.content}</p>
+<p>등록일자:${vo.regdate}</p>
+<p>조회수:${vo.cnt}</p>
 
 <a href="<c:url value="/board/editForm.jsp?num=${vo.num}"/>"><button>수정</button></a>
+<a href="<c:url value="/board/deleteForm.jsp?num=${vo.num }"/>"><button>삭제</button></a>
+<a href="<c:url value="/board/list.jsp"/>"><button>게시판으로</button></a>
 </body>
 </html>
 
